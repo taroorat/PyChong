@@ -1,0 +1,9 @@
+import requests
+url="https://www.baidu.com/"
+
+response=requests.get(url)
+
+if response.status_code == 200:
+    print(response.text)
+else :
+    print("error code: %d"% response.status_code)
