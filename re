@@ -1,6 +1,6 @@
 import re
 
-with open('files/mail.log','r') as f:
+with open('files/test.log','r') as f:
     for line in f.readlines():
         result=re.findall('ht',line)
         print(result)
