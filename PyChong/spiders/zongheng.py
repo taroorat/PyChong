@@ -8,5 +8,6 @@ class ZonghengSpider(scrapy.Spider):
     start_urls = ['http://book.zongheng.com/chapter/672340/36898237.html']
 
     def parse(self, response):
-        print(response.css('p').extract_first())
-
+        # print(response.css('p').re('<p>(.*)</p>'))
+        for content in response.css('p').re('<p>(.*)</p>'):
+            print(content)
