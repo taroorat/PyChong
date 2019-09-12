@@ -9,5 +9,9 @@ class ZonghengSpider(scrapy.Spider):
 
     def parse(self, response):
         # print(response.css('p').re('<p>(.*)</p>'))
+        # print(response.text)
         for content in response.css('p').re('<p>(.*)</p>'):
             print(content)
+        for nextUrl in response.css('div.chap_btnbox').re('<a href="(.*)" class=.*\}\'>.*</a>'):
+            print(nextUrl)
+
