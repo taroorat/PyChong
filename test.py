@@ -1,0 +1,5 @@
+a=(i*2 for i in range(10))
+print(next(a))
+print(next(a))
+print(next(a))
+print(a.__next__())
