@@ -13,8 +13,10 @@ class FeixiaohaoSpider(scrapy.Spider):
         for data in response.css('p').re('<p>(.*)</p>'):
             responseData=data
             responseData = json.loads(responseData)
-            print(json.dumps(responseData,indent=4))
-
+            # print(json.dumps(responseData,indent=4))
+            print(type(responseData['data']['list']))
+            for data in responseData['data']['list']:
+                print(data)
 
 
 
