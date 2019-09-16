@@ -12,3 +12,7 @@ class PychongItem(scrapy.Item):
     # define the fields for your item here like:
     # name = scrapy.Field()
     pass
+
+class FeixiaohaoItem(scrapy.Item):
+    # 定义我们需要的存储数据字段
+    name=scrapy.Field()
