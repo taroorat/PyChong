@@ -26,7 +26,7 @@ class FeiXiaoHaoMysqlPipeline(object):
         self._sql = None
 
     def process_item(self, item, spider):
-        self.cursor.execute(self.sql, (item['name']))
+        self.cursor.execute(self.sql, (item['rank'],item['name']))
         self.conn.commit()
         return item
 
@@ -34,7 +34,7 @@ class FeiXiaoHaoMysqlPipeline(object):
     def sql(self):
         if not self._sql:
             self._sql = """
-                insert into ValueRank(name) values(%s)
+                insert into ValueRank(rank,name) values(%s,%s)
                 """
             return self._sql
         return self._sql
