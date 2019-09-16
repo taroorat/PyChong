@@ -14,6 +14,6 @@ class PychongItem(scrapy.Item):
     pass
 
 class FeixiaohaoItem(scrapy.Item):
-    # 定义我们需要的存储数据字段
+    # 定义需要的存储数据字段
     rank=scrapy.Field()
     name=scrapy.Field()
