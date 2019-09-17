@@ -4,7 +4,7 @@ from PyChong.items import MeituluItem
 
 class MeituluSpider(scrapy.Spider):
     name = 'meitulu'
-    girl = '篠崎愛'
+    girl = '新垣结衣'
     allowed_domains = ['meitulu.com','ttsqgs.com']
     # start_urls = ['https://mtl.ttsqgs.com/images/img/2771/6.jpg']
     start_urls = ['https://www.meitulu.com/search/%s'%(girl)]
