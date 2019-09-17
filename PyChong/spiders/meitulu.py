@@ -4,9 +4,10 @@ from PyChong.items import MeituluItem
 
 class MeituluSpider(scrapy.Spider):
     name = 'meitulu'
+    girl = '篠崎愛'
     allowed_domains = ['meitulu.com','ttsqgs.com']
     # start_urls = ['https://mtl.ttsqgs.com/images/img/2771/6.jpg']
-    start_urls = ['https://www.meitulu.com/search/篠崎愛']
+    start_urls = ['https://www.meitulu.com/search/%s'%(girl)]
 
     def parse(self, response):
         # print(response)

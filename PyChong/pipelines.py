@@ -3,6 +3,7 @@ import pymysql
 import scrapy
 from scrapy.pipelines.images import ImagesPipeline
 from scrapy.exceptions import DropItem
+from PyChong.spiders.meitulu import MeituluSpider
 
 # Define your item pipelines here
 #
@@ -54,7 +55,7 @@ class MeituluImagesPipeline(ImagesPipeline):
         image_guid = request.url.split('/')[-2]+'-'+request.url.split('/')[-1]
         image_path=request.url.split('/')[-2]
         # file_dir=request.meta['xxx']
-        file_name='篠崎愛'
+        file_name=MeituluSpider.girl
         return '%s/%s/%s' % (file_name,request.url.split('/')[-2],image_guid)
 
     def item_completed(self, results, item, info):
