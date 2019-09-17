@@ -67,13 +67,14 @@ ROBOTSTXT_OBEY = True
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
-   'PyChong.pipelines.PychongPipeline': 300,
+   # 'PyChong.pipelines.PychongPipeline': 300,
    # 'PyChong.pipelines.FeiXiaoHaoMysqlPipeline': 299,
    'PyChong.pipelines.MeituluImagesPipeline': 1,
 }
 
 #设置图片下载路径
-IMAGES_STORE = 'D:\PycharmProjects\imgs\meitulu'
+# IMAGES_STORE = 'D:\PycharmProjects\imgs\meitulu'
+IMAGES_STORE = '/Users/handsomechief/PycharmProjects3/images/meitulu'
 # 过期天数
 IMAGES_EXPIRES = 90  #90天内抓取的都不会被重抓
 
