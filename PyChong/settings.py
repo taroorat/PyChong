@@ -68,8 +68,15 @@ DOWNLOAD_DELAY = 1
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
    'PyChong.pipelines.PychongPipeline': 300,
-   'PyChong.pipelines.FeiXiaoHaoMysqlPipeline': 299,
+   # 'PyChong.pipelines.FeiXiaoHaoMysqlPipeline': 299,
+   'PyChong.pipelines.MeituluImagesPipeline': 1,
 }
+
+#设置图片下载路径
+IMAGES_STORE = 'D:\PycharmProjects\imgs\meitulu'
+# 过期天数
+IMAGES_EXPIRES = 90  #90天内抓取的都不会被重抓
+
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://docs.scrapy.org/en/latest/topics/autothrottle.html

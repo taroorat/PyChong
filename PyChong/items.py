@@ -17,3 +17,9 @@ class FeixiaohaoItem(scrapy.Item):
     # 定义需要的存储数据字段
     rank=scrapy.Field()
     name=scrapy.Field()
+
+class MeituluItem(scrapy.Item):
+
+    # ... other item fields ...
+    image_urls = scrapy.Field()
+    image_paths=scrapy.Field()

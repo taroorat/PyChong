@@ -1,5 +1,9 @@
 # -*- coding: utf-8 -*-
 import pymysql
+import scrapy
+from scrapy.pipelines.images import ImagesPipeline
+from scrapy.exceptions import DropItem
+
 
 # Define your item pipelines here
 #
@@ -10,6 +14,7 @@ import pymysql
 class PychongPipeline(object):
     def process_item(self, item, spider):
         return item
+
 
 class FeiXiaoHaoMysqlPipeline(object):
     def __init__(self):
@@ -26,7 +31,7 @@ class FeiXiaoHaoMysqlPipeline(object):
         self._sql = None
 
     def process_item(self, item, spider):
-        self.cursor.execute(self.sql, (item['rank'],item['name']))
+        self.cursor.execute(self.sql, (item['rank'], item['name']))
         self.conn.commit()
         return item
 
@@ -38,3 +43,17 @@ class FeiXiaoHaoMysqlPipeline(object):
                 """
             return self._sql
         return self._sql
+
+
+class MeituluImagesPipeline(ImagesPipeline):
+
+    def get_media_requests(self, item, info):
+        for image_url in item['image_urls']:
+            yield scrapy.Request(image_url)
+
+    def item_completed(self, results, item, info):
+        image_paths = [x['path'] for ok, x in results if ok]
+        if not image_paths:
+            raise DropItem("Item contains no images")
+        item['image_paths'] = image_paths
+        return item
