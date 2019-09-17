@@ -21,5 +21,6 @@ class FeixiaohaoItem(scrapy.Item):
 class MeituluItem(scrapy.Item):
 
     # ... other item fields ...
+    path=scrapy.Field()
     image_urls = scrapy.Field()
     image_paths=scrapy.Field()

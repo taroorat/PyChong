@@ -15,7 +15,8 @@ class MeituluSpider(scrapy.Spider):
             yield scrapy.Request(url=url, callback=self.parse_images)
 
     def parse_images(self,response):
-        print(response.xpath("//title").extract_first())
+        # path=response.xpath("//title").re('<title>(.*)</title>')[0]
+        # path='mest'
         url_split=response.xpath("//center//img/@src").extract_first().split('1.jpg')
         img_urls=[]
         for i in range(200):
