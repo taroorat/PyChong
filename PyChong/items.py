@@ -30,3 +30,9 @@ class SbiqugeCrawlspiderItem(scrapy.Item):
     contents=scrapy.Field()
     chapter_title = scrapy.Field()
     novel_name = scrapy.Field()
+
+class QuanshuwangCrawlspiderItem(scrapy.Item):
+    id=scrapy.Field()
+    contents=scrapy.Field()
+    chapter_title = scrapy.Field()
+    novel_name = scrapy.Field()

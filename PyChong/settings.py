@@ -70,7 +70,8 @@ ITEM_PIPELINES = {
    # 'PyChong.pipelines.PychongPipeline': 300,
    # 'PyChong.pipelines.FeiXiaoHaoMysqlPipeline': 299,
    # 'PyChong.pipelines.MeituluImagesPipeline': 1,
-   'PyChong.pipelines.SbiqugeCrawlspiderPipeline':1,
+   # 'PyChong.pipelines.SbiqugeCrawlspiderPipeline':1,
+   'PyChong.pipelines.QuanshuwangCrawlspiderPipeline': 1,
 }
 
 #设置图片下载路径

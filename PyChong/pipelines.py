@@ -79,3 +79,16 @@ class SbiqugeCrawlspiderPipeline(object):
         self.file = open(novel, 'a',encoding="utf-8")
         self.file.write(item['contents'])
         self.file.close()
+
+class QuanshuwangCrawlspiderPipeline(object):
+    def process_item(self, item, spider):
+        novel = 'D:\PycharmProjects\\files\quanshuwang\\%s\\%s.txt'%(item['novel_name'],str(item['id'])+item['chapter_title'])
+        path= 'D:\PycharmProjects\\files\quanshuwang\\%s'%(item['novel_name'])
+        # 判断目录是否存在，不存在则建立
+        isExists = os.path.exists(path)
+        if not isExists:
+            os.makedirs(path)
+
+        self.file = open(novel, 'a',encoding="utf-8")
+        self.file.write(item['contents'])
+        self.file.close()
