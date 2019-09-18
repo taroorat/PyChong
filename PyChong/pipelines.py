@@ -1,9 +1,11 @@
 # -*- coding: utf-8 -*-
 import pymysql
 import scrapy
+import os
 from scrapy.pipelines.images import ImagesPipeline
 from scrapy.exceptions import DropItem
 from PyChong.spiders.meitulu import MeituluSpider
+
 
 # Define your item pipelines here
 #
@@ -64,3 +66,16 @@ class MeituluImagesPipeline(ImagesPipeline):
             raise DropItem("Item contains no images")
         item['image_paths'] = image_paths
         return item
+
+class SbiqugeCrawlspiderPipeline(object):
+    def process_item(self, item, spider):
+        novel = 'D:\PycharmProjects\\files\sbiquge\\%s\\%s.txt'%(item['novel_name'],str(item['id'])+item['chapter_title'])
+        path= 'D:\PycharmProjects\\files\sbiquge\\%s'%(item['novel_name'])
+        # 判断目录是否存在，不存在则建立
+        isExists = os.path.exists(path)
+        if not isExists:
+            os.makedirs(path)
+
+        self.file = open(novel, 'a',encoding="utf-8")
+        self.file.write(item['contents'])
+        self.file.close()

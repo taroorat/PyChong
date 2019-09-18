@@ -24,3 +24,9 @@ class MeituluItem(scrapy.Item):
     path=scrapy.Field()
     image_urls = scrapy.Field()
     image_paths=scrapy.Field()
+
+class SbiqugeCrawlspiderItem(scrapy.Item):
+    id=scrapy.Field()
+    contents=scrapy.Field()
+    chapter_title = scrapy.Field()
+    novel_name = scrapy.Field()
