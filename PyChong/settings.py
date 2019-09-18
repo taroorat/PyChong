@@ -15,7 +15,7 @@ SPIDER_MODULES = ['PyChong.spiders']
 NEWSPIDER_MODULE = 'PyChong.spiders'
 
 
-LOG_LEVEL = 'WARNING'
+LOG_LEVEL = 'DEBUG'
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = 'PyChong (+http://www.yourdomain.com)'

@@ -10,7 +10,7 @@ class QuanshuwangSpider(CrawlSpider):
     start_urls = ['http://quanshuwang.com/']
 
     rules = (
-        Rule(LinkExtractor(allow="/\d+?/\d+?"),callback='parse_item',follow=False),
+        Rule(LinkExtractor(allow="\d+?"),callback='parse_item',follow=False),
     )
 
     def parse_item(self, response):
@@ -23,13 +23,14 @@ class QuanshuwangSpider(CrawlSpider):
             chapter_name = chapter.xpath('./a/text()').extract_first()
             chapter_link = chapter.xpath('./a/@href').extract_first()
             if chapter_name:
-                # print(novel_name,chapter_link,chapter_name)
+                print(novel_name,chapter_link,chapter_name)
                 item = QuanshuwangCrawlspiderItem(id=id,chapter_title=chapter_name, novel_name=novel_name)
                 url = chapter_link
                 request = scrapy.Request(url=url, callback=self.parse_body)
                 # print(request,url)
                 request.meta['key'] = item
                 # print(item)
+                print(request)
                 yield request
 
     def parse_body(self, response):
