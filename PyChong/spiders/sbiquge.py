@@ -4,6 +4,7 @@ from scrapy.linkextractors import LinkExtractor
 from scrapy.spiders import CrawlSpider, Rule
 import re
 from PyChong.items import SbiqugeCrawlspiderItem
+import logging
 
 class SbiqugeSpider(CrawlSpider):
     name = 'sbiquge'
@@ -16,6 +17,8 @@ class SbiqugeSpider(CrawlSpider):
     def parse_item(self, response):
         chap_list = response.xpath('.//*[@class="listmain"]/dl/dd')
         id=0
+        # logging.warning(response.xpath('//a/@href').extract())
+        # logging.warning(response)
         for chapter in chap_list:
             id=id+1
             novel_name = chapter.xpath('//*[@id="book"]/div[1]/div/a[2]/text()').extract_first()
@@ -30,15 +33,15 @@ class SbiqugeSpider(CrawlSpider):
                 # print(request,url)
                 request.meta['key'] = item
                 # print(item)
+                # logging.warning("A                      +                    %s",request)
                 yield request
+
 
     def parse_body(self, response):
         item = response.meta['key']
         # print(item)
         # response.xpath('//div[@id="content"]/text()').getall() 为list列表
         contents=''.join(response.xpath('//div[@id="content"]/text()').getall())
-
-        # print(contents,'\n','\n','\n','\n','\n')
         item['contents'] = contents
         # print(item)
         yield item
