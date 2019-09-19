@@ -31,5 +31,6 @@ class CrawlmeituluSpider(CrawlSpider):
             url=response.urljoin(url)
             print(url)
             yield scrapy.Request(url=url, callback=self.parse_item,meta={'title' : title})
-        item = MeituluItem(image_urls=img_urls,title=response.meta['title'])
+        # 解决title错误
+        item = MeituluItem(image_urls=img_urls, title=title)
         yield item
