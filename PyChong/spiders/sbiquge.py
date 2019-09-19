@@ -21,6 +21,7 @@ class SbiqugeSpider(CrawlSpider):
             novel_name = chapter.xpath('//*[@id="book"]/div[1]/div/a[2]/text()').extract_first()
             chapter_name = chapter.xpath('./a/text()').extract_first()
             chapter_link = chapter.xpath('./a/@href').extract_first()
+            # chapter_name 判断很重要，避免进入非小说目录
             if chapter_name:
                 # print(novel_name,chapter_link,chapter_name)
                 item = SbiqugeCrawlspiderItem(id=id,chapter_title=chapter_name, novel_name=novel_name)
