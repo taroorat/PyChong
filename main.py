@@ -6,13 +6,13 @@ from bs4 import BeautifulSoup
 headers={
     'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36'
 }
-url="http://book.zongheng.com/chapter/672340/36898237.html"
+url="http://youtube.com/watch?v=9bZkp7q19f0"
 proxies={}
-# proxies={'http':'http://127.0.0.1:1087'}
+proxies={'http':'http://127.0.0.1:1087'}
 
 response=requests.get(url,headers=headers,proxies=proxies,timeout=1)
 responseTest=response.text
-# print(responseTest)
+print(responseTest)
 if response.status_code == 200:
     soup=BeautifulSoup(responseTest,'lxml')
     #select css选择器，calss. id#
