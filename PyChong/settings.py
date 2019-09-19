@@ -15,8 +15,8 @@ SPIDER_MODULES = ['PyChong.spiders']
 NEWSPIDER_MODULE = 'PyChong.spiders'
 
 
-LOG_LEVEL = 'DEBUG'
-# LOG_LEVEL = 'WARNING'
+# LOG_LEVEL = 'DEBUG'
+LOG_LEVEL = 'WARNING'
 # LOG_FILE = 'D:\\PycharmProjects\\logs\\log.txt'
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
@@ -77,8 +77,8 @@ ITEM_PIPELINES = {
 }
 
 #设置图片下载路径
-IMAGES_STORE = 'D:\PycharmProjects\imgs\meitulu'
-# IMAGES_STORE = '/Users/handsomechief/PycharmProjects3/images/meitulu'
+# IMAGES_STORE = 'D:\PycharmProjects\imgs\meitulu'
+IMAGES_STORE = '/Users/handsomechief/PycharmProjects3/images/meitulu'
 # 过期天数
 IMAGES_EXPIRES = 90  #90天内抓取的都不会被重抓
 

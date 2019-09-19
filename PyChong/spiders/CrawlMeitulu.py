@@ -12,13 +12,12 @@ class CrawlmeituluSpider(CrawlSpider):
 
     rules = (
         Rule(LinkExtractor(allow=r'item/\d+?'), callback='parse_item', follow=False),
-        Rule(LinkExtractor(allow=r'item/\d+?_\d+?'),callback='parse_item',  follow=True),
         # Rule(LinkExtractor(allow=r't/nvshen/\d+?'), follow=True),
     )
     def parse_item(self, response):
         image_list = response.xpath('//center/img/@src')
-        print(response)
-        title=response.xpath('//title/text()').extract_first()
+        # print(response)
+        title=response.xpath('//title/text()').re("(.*)P\]_.*")[0]
         print(title)
         # print(image_list)
         img_urls = []
@@ -27,9 +26,10 @@ class CrawlmeituluSpider(CrawlSpider):
             image_url=image.re('(.*)')[0]
             # print(image_url)
             img_urls.append(image_url)
-        url=response.xpath('//div[@class="boxs"]//a/@href').extract_first()
-        print(url)
-
-        yield scrapy.Request(url=url, callback=self.parse_item,meta={'title' : title})
+        url_list = response.xpath('//a[@class="a1"]/@href').extract()
+        for url in url_list:
+            url=response.urljoin(url)
+            print(url)
+            yield scrapy.Request(url=url, callback=self.parse_item,meta={'title' : title})
         item = MeituluItem(image_urls=img_urls,title=response.meta['title'])
         yield item
