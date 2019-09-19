@@ -12,7 +12,7 @@ class CrawlmeituluSpider(CrawlSpider):
 
     rules = (
         Rule(LinkExtractor(allow=r'item/\d+?'), callback='parse_item', follow=False),
-        Rule(LinkExtractor(allow=r'item/\d+?_\d+?'), follow=True),
+        Rule(LinkExtractor(allow=r'item/\d+?_\d+?'),callback='parse_item',  follow=True),
         # Rule(LinkExtractor(allow=r't/nvshen/\d+?'), follow=True),
     )
     def parse_item(self, response):
