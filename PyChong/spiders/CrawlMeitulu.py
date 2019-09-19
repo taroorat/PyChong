@@ -28,11 +28,14 @@ class CrawlmeituluSpider(CrawlSpider):
             img_urls.append(image_url)
         url_short_list = response.xpath('//a[@class="a1"]/@href').extract()
         url=response.xpath('//ul[@class="img"]//a/@href').extract_first()
-        print(url)
-        yield scrapy.Request(url=url, callback=self.parse_item, meta={'title': title})
-
+        # 扩展url为3个
+        url_list=[]
+        url_list.append(url)
         for url in url_short_list:
             url=response.urljoin(url)
+            url_list.append(url)
+        # url遍历
+        for url in url_list:
             print(url)
             yield scrapy.Request(url=url, callback=self.parse_item,meta={'title' : title})
         # 解决title错误
