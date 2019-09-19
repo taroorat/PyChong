@@ -26,8 +26,12 @@ class CrawlmeituluSpider(CrawlSpider):
             image_url=image.re('(.*)')[0]
             # print(image_url)
             img_urls.append(image_url)
-        url_list = response.xpath('//a[@class="a1"]/@href').extract()
-        for url in url_list:
+        url_short_list = response.xpath('//a[@class="a1"]/@href').extract()
+        url=response.xpath('//ul[@class="img"]//a/@href').extract_first()
+        print(url)
+        yield scrapy.Request(url=url, callback=self.parse_item, meta={'title': title})
+
+        for url in url_short_list:
             url=response.urljoin(url)
             print(url)
             yield scrapy.Request(url=url, callback=self.parse_item,meta={'title' : title})
