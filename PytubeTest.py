@@ -8,7 +8,7 @@ from pytube import YouTube
 # urllib.request.install_opener(opener)
 # #输入要下载的视频的路径
 # print(1)
-####### python 选3.5.3可用，当前3.7 报证书错误
+####### python 选3.5.3可用，当前3.7 报证书错误（mac下）
 url='https://youtube.com/watch?v=9bZkp7q19f0'
 yt = YouTube(url)
 print(yt.streams.all())
