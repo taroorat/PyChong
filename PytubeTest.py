@@ -8,7 +8,8 @@ from pytube import YouTube
 # opener = urllib.request.build_opener(proxy,urllib.request.HTTPHandler)
 # urllib.request.install_opener(opener)
 
-
+# url https://www.youtube.com/watch?v=ECF4CQ8yABs&list=PLZI_M9ry4jeUz4r7lVdSUdpo2VTh5ntXQ
+# url https://www.youtube.com/watch?v=uWZpy4vGbFQ
 ####### python 选3.5.3可用，当前3.7 报证书错误（mac下）
 ####### widows3.7下可正常使用
 url='https://youtube.com/watch?v=9bZkp7q19f0'
