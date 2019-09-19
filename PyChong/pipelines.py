@@ -50,15 +50,15 @@ class FeiXiaoHaoMysqlPipeline(object):
 class MeituluImagesPipeline(ImagesPipeline):
 
     def get_media_requests(self, item, info):
+        title = item['title']
         for image_url in item['image_urls']:
-            yield scrapy.Request(image_url)
+            yield scrapy.Request(image_url,meta={'title': title})
 
     def file_path(self, request, response=None, info=None):
         image_guid = request.url.split('/')[-2]+'-'+request.url.split('/')[-1]
-        image_path=request.url.split('/')[-2]
-        # file_dir=request.meta['xxx']
-        file_name=MeituluSpider.girl
-        return '%s/%s/%s' % (file_name,request.url.split('/')[-2],image_guid)
+        file_dir=request.meta['title']
+        # print(file_name, request.url.split('/')[-2], image_guid)
+        return '%s/%s' % (file_dir, image_guid)
 
     def item_completed(self, results, item, info):
         image_paths = [x['path'] for ok, x in results if ok]
