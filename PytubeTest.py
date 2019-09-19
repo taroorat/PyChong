@@ -1,7 +1,7 @@
 import urllib.request
 from pytube import YouTube
 
-### 设置代理
+### 设置代理（没啥用）
 # proxy_addr = 'http://127.0.0.1:1087'
 # proxy = urllib.request.ProxyHandler({'http':proxy_addr})
 #
