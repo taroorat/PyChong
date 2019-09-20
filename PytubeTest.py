@@ -3,6 +3,7 @@ from pytube import YouTube
 from bs4 import BeautifulSoup
 import re
 import os
+import urllib
 
 search_query='Fancam+Nancy'
 
@@ -39,7 +40,10 @@ def download_vedio():
         yt = YouTube(url)
         for stream in (yt.streams.filter(subtype='mp4').all()):
             print(stream)
-        yt.streams.get_by_itag(137).download(path)
+        try:
+            yt.streams.get_by_itag(137).download(path)
+        except Exception  as e:
+            print(e)
 
 
 if __name__ == '__main__':
