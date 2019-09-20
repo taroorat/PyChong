@@ -36,10 +36,12 @@ def download_vedio():
         os.makedirs(path)
     short_url_list=get_search_short_url()
     for short_url in short_url_list:
-        url = 'https://www.youtube.com/watch?v='+short_url
+        print(short_url)
+        url = 'https://www.youtube.com/watch?v=xBbfRL9Aiqo'
+        url = 'https://www.youtube.com/watch?v=' + short_url
         yt = YouTube(url)
-        for stream in (yt.streams.filter(subtype='mp4').all()):
-            print(stream)
+        # for stream in (yt.streams.filter(subtype='mp4').all()):
+        #     print(stream)
         try:
             yt.streams.get_by_itag(137).download(path)
         except Exception  as e:
