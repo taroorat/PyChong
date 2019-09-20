@@ -12,6 +12,7 @@ from pytube import YouTube
 # url https://www.youtube.com/watch?v=uWZpy4vGbFQ
 ####### python 选3.5.3可用，当前3.7 报证书错误（mac下）
 ####### widows3.7下可正常使用
-url='https://youtube.com/watch?v=9bZkp7q19f0'
+
+url='https://www.youtube.com/watch?v=uWZpy4vGbFQ'
 yt = YouTube(url)
 print(yt.streams.all())
