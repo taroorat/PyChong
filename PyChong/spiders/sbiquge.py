@@ -33,9 +33,8 @@ class SbiqugeSpider(CrawlSpider):
                 # print(request,url)
                 request.meta['key'] = item
                 # print(item)
-                # logging.warning("A                      +                    %s",request)
+                # logging.warning("A  +  %s",request)
                 yield request
-
 
     def parse_body(self, response):
         item = response.meta['key']
